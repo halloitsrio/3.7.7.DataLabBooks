@@ -15,7 +15,10 @@ public class Movie {
     private double tmdbScore;
     private double averageScore;
 
-    public Movie(String id, String title, String description, int releaseYear, String ageRating, int runtime, ArrayList<String> genres, double imdbScore, double tmdbScore) {
+    public Movie(
+        String id, String title, String description, int releaseYear, String ageRating,
+        int runtime, ArrayList<String> genres, double imdbScore, double tmdbScore
+    ) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -59,10 +62,6 @@ public class Movie {
     //methods
     public void print() {
         System.out.println("ID: " + id + " Title: " + title + " Description: " + description + " Release Year: " + releaseYear + " Age Rating: " + ageRating + " Runtime: " + runtime + " Genres: " + genres);
-    }
-
-    public static void main(String[] args) {
-
     }
 
 }

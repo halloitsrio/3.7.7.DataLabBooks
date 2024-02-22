@@ -42,13 +42,27 @@ public class Main {
     CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Average Score vs. Genre").xAxisTitle("Genre").yAxisTitle("Average Score").build();
     List<String> xData = new ArrayList<String>();
     List<Double> yData = new ArrayList<Double>();
+    // list of genres to iterate through
+    ArrayList<String> genres = new ArrayList<String>();
     for (Movie movie : movies) {
       for (String genre : movie.getGenres()) {
-        if (!xData.contains(genre)) {
-          xData.add(genre);
-          yData.add(movie.getAverageScore());
+        if (!genres.contains(genre)) {
+          genres.add(genre);
         }
       }
+    }
+
+    for (String genre : genres) {
+      double sum = 0;
+      int count = 0;
+      for (Movie movie : movies) {
+        if (movie.getGenres().contains(genre)) {
+          sum += movie.getAverageScore();
+          count++;
+        }
+      }
+      xData.add(genre);
+      yData.add(sum / count);
     }
 
     // display bars from lowest to highest average score using bubble sort
